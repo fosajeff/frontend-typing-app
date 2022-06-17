@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const FinalScore = ({ paragraphText, userText }) => {
+const FinalScore = ({ paragraphText, userText, onTryAgain }) => {
   const [score, setScore] = useState(0);
 
   const originalTextArray = paragraphText.split(" ");
@@ -17,7 +17,22 @@ const FinalScore = ({ paragraphText, userText }) => {
     setScore(totalScore);
   }, []);
 
-  return <div>FinalScore {score}</div>;
+  return (
+    <div className="text-center mt-5 pt-5">
+      <h1>Congratulations!!</h1>
+      <span className="h3 mt-3 pe-2 text-warning">Final Score Is</span>{" "}
+      <span className="h3"> {score}</span>
+      <div>
+        <button
+          onClick={onTryAgain}
+          className="btn btn-success btn-lg mt-4"
+          type="button"
+        >
+          TRY AGAIN
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default FinalScore;
