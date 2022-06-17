@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import Timer from "../components/Timer";
 import Header from "../components/Header";
 import FinalScore from "../components/FinalScore";
 
@@ -17,6 +16,9 @@ export default function Home(props) {
   const initialTimeInSeconds = 0;
   const [minutes, setMinutes] = useState(initialTimeInMinutes);
   const [seconds, setSeconds] = useState(initialTimeInSeconds);
+
+  // time to be used for calculation
+  const [timeInMinutes, setTimeInMinutes] = useState(0);
 
   const [userText, setUserText] = useState("");
 
@@ -42,9 +44,11 @@ export default function Home(props) {
     if (customValues.customTime !== "") {
       setMinutes(+customValues.customTime);
       setSeconds(0);
+      setTimeInMinutes(+customValues.customTime);
     } else if (customValues.time !== "") {
       setMinutes(+customValues.time);
       setSeconds(0);
+      setTimeInMinutes(+customValues.time);
     } else {
       return;
     }
@@ -195,6 +199,7 @@ export default function Home(props) {
             onTryAgain={handleTryAgain}
             paragraphText={paragraphText}
             userText={userText}
+            duration={timeInMinutes}
           />
         ))}
     </div>
