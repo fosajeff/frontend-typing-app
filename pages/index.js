@@ -5,10 +5,11 @@ import Header from "../components/Header";
 import TextParagraph from "../components/TextParagraph";
 import FinalScore from "../components/FinalScore";
 
-import { text } from "../Data.json";
+import textData from "../Data.json";
 
 export default function Home(props) {
-  const [paragraphText, setParagraphText] = useState(text);
+  const initialTextData = textData.text;
+  const [paragraphText, setParagraphText] = useState(initialTextData);
   const [userText, setUserText] = useState("");
   const [gameOver, setGameOver] = useState(false);
 
